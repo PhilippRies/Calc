@@ -2,6 +2,8 @@ package de.calc.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,9 +30,26 @@ public class CalcView extends JFrame {
 		getPnlEingabe().add(getTxtEingabe());
 		getPnlZahlen().setLayout(new GridLayout(4, 3));
 		for(int i = 1; i <= 9; i++){
-			getPnlZahlen().add(new JButton("" + i));
+			JButton btn = new JButton("" + i);
+			final int index = i;
+			btn.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) {
+					getTxtEingabe().setText(getTxtEingabe().getText() + index);
+				}
+			});
+			getPnlZahlen().add(btn);
 		}
-		getPnlZahlen().add(new JButton("" + 0));
+		
+		JButton btnNull = new JButton("" + 0);
+		btnNull.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				getTxtEingabe().setText(getTxtEingabe().getText() + 0);
+			}
+		});
+		getPnlZahlen().add(btnNull);
+		
 		
 		getPnlOperatoren().setLayout(new GridLayout(5, 1));
 		getPnlOperatoren().add(getBtnPlus());
@@ -92,6 +111,12 @@ public class CalcView extends JFrame {
 	public JButton getBtnPlus() {
 		if(btnPlus == null){
 			btnPlus = new JButton("+");
+			btnPlus.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) {
+					getTxtEingabe().setText(getTxtEingabe().getText() + "+");
+				}
+			});
 		}
 		return btnPlus;
 	}
@@ -99,6 +124,12 @@ public class CalcView extends JFrame {
 	public JButton getBtnMinus() {
 		if(btnMinus == null){
 			btnMinus = new JButton("-");
+			btnMinus.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					getTxtEingabe().setText(getTxtEingabe().getText() + "-");
+				}
+			});
 		}
 		return btnMinus;
 	}
@@ -106,6 +137,12 @@ public class CalcView extends JFrame {
 	public JButton getBtnMal() {
 		if(btnMal == null){
 			btnMal = new JButton("x");
+			btnMal.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					getTxtEingabe().setText(getTxtEingabe().getText() + "x");
+				}
+			});
 		}
 		return btnMal;
 	}
@@ -113,6 +150,12 @@ public class CalcView extends JFrame {
 	public JButton getBtnGeteilt() {
 		if(btnGeteilt == null){
 			btnGeteilt = new JButton(":");
+			btnGeteilt.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					getTxtEingabe().setText(getTxtEingabe().getText() + ":");
+				}
+			});
 		}
 		return btnGeteilt;
 	}
