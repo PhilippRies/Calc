@@ -177,7 +177,7 @@ public class CalcView extends JFrame {
 					String eingabe = getTxtEingabe().getText();
 					if (operator == "+")
 					{
-						String[] a = eingabe.split("+");
+						String[] a = eingabe.split("\\+");
 						double zahl1 = Double.parseDouble(a[0]);
 						double zahl2 = Double.parseDouble(a[1]);
 						
@@ -185,15 +185,27 @@ public class CalcView extends JFrame {
 					}
 					else if (operator == "-")
 					{
+						String[] a = eingabe.split("-");
+						double zahl1 = Double.parseDouble(a[0]);
+						double zahl2 = Double.parseDouble(a[1]);
 						
+						getTxtEingabe().setText("" + c.subtrahiere(zahl1, zahl2));
 					}
 					else if (operator == "x")
 					{
+						String[] a = eingabe.split("x");
+						double zahl1 = Double.parseDouble(a[0]);
+						double zahl2 = Double.parseDouble(a[1]);
 						
+						getTxtEingabe().setText("" + c.multipliziere(zahl1, zahl2));
 					}
 					else
 					{
+						String[] a = eingabe.split(":");
+						double zahl1 = Double.parseDouble(a[0]);
+						double zahl2 = Double.parseDouble(a[1]);
 						
+						getTxtEingabe().setText("" + c.dividiere(zahl1, zahl2));
 					}
 					
 				}
