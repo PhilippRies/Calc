@@ -1,5 +1,8 @@
 package de.calc.view;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +25,27 @@ public class CalcView extends JFrame {
 	}
 
 	private void initialise() {
+		getPnlEingabe().add(getTxtEingabe());
+		getPnlZahlen().setLayout(new GridLayout(4, 3));
+		for(int i = 1; i <= 9; i++){
+			getPnlZahlen().add(new JButton("" + i));
+		}
+		getPnlZahlen().add(new JButton("" + 0));
 		
+		getPnlOperatoren().setLayout(new GridLayout(5, 1));
+		getPnlOperatoren().add(getBtnPlus());
+		getPnlOperatoren().add(getBtnMinus());
+		getPnlOperatoren().add(getBtnMal());
+		getPnlOperatoren().add(getBtnGeteilt());
+		getPnlOperatoren().add(getBtnEnter());
+		
+		add(getPnlEingabe(), BorderLayout.NORTH);
+		add(getPnlZahlen(), BorderLayout.CENTER);
+		add(getPnlOperatoren(), BorderLayout.EAST);
+		
+		pack();
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 
@@ -61,7 +84,7 @@ public class CalcView extends JFrame {
 
 	public JTextField getTxtEingabe() {
 		if(txtEingabe == null){
-			txtEingabe = new JTextField();
+			txtEingabe = new JTextField(20);
 		}
 		return txtEingabe;
 	}
