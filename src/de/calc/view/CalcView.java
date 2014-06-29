@@ -17,23 +17,33 @@ public class CalcView extends JFrame {
 	private JPanel pnlZahlen;
 	private JPanel pnlOperatoren;
 	
-	public CalcView() {
-		initialize();
+	public CalcView(){
+		initialise();
 	}
 
-	private void initialize() {
+	private void initialise() {
+		
 		
 	}
 
 	public JPanel getPnlEingabe() {
+		if (pnlEingabe == null){
+			pnlEingabe = new JPanel();
+		}
 		return pnlEingabe;
 	}
 
 	public JPanel getPnlZahlen() {
+		if (pnlZahlen == null){
+			pnlZahlen = new JPanel();
+		}
 		return pnlZahlen;
 	}
 
 	public JPanel getPnlOperatoren() {
+		if (pnlOperatoren == null){
+			pnlOperatoren = new JPanel();
+		}
 		return pnlOperatoren;
 	}
 
@@ -50,29 +60,44 @@ public class CalcView extends JFrame {
 	}
 
 	public JTextField getTxtEingabe() {
-		if(txtEingabe == null) {
+		if(txtEingabe == null){
 			txtEingabe = new JTextField();
 		}
 		return txtEingabe;
 	}
 
 	public JButton getBtnPlus() {
+		if(btnPlus == null){
+			btnPlus = new JButton("+");
+		}
 		return btnPlus;
 	}
 
 	public JButton getBtnMinus() {
+		if(btnMinus == null){
+			btnMinus = new JButton("-");
+		}
 		return btnMinus;
 	}
 
 	public JButton getBtnMal() {
+		if(btnMal == null){
+			btnMal = new JButton("x");
+		}
 		return btnMal;
 	}
 
 	public JButton getBtnGeteilt() {
+		if(btnGeteilt == null){
+			btnGeteilt = new JButton(":");
+		}
 		return btnGeteilt;
 	}
 
 	public JButton getBtnEnter() {
+		if(btnEnter == null){
+			btnEnter = new JButton("=");
+		}
 		return btnEnter;
 	}
 
