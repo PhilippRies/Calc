@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import de.calc.control.CalcControl;
+
 public class CalcView extends JFrame {
 	
 	private JTextField txtEingabe;
@@ -21,6 +23,8 @@ public class CalcView extends JFrame {
 	private JPanel pnlEingabe;
 	private JPanel pnlZahlen;
 	private JPanel pnlOperatoren;
+	private String operator;
+	private CalcControl c = new CalcControl();
 	
 	public CalcView(){
 		initialise();
@@ -115,6 +119,7 @@ public class CalcView extends JFrame {
 				
 				public void actionPerformed(ActionEvent arg0) {
 					getTxtEingabe().setText(getTxtEingabe().getText() + "+");
+					operator = "+";
 				}
 			});
 		}
@@ -128,6 +133,7 @@ public class CalcView extends JFrame {
 				
 				public void actionPerformed(ActionEvent e) {
 					getTxtEingabe().setText(getTxtEingabe().getText() + "-");
+					operator = "-";
 				}
 			});
 		}
@@ -141,6 +147,7 @@ public class CalcView extends JFrame {
 				
 				public void actionPerformed(ActionEvent e) {
 					getTxtEingabe().setText(getTxtEingabe().getText() + "x");
+					operator = "x";
 				}
 			});
 		}
@@ -154,6 +161,7 @@ public class CalcView extends JFrame {
 				
 				public void actionPerformed(ActionEvent e) {
 					getTxtEingabe().setText(getTxtEingabe().getText() + ":");
+					operator = ":";
 				}
 			});
 		}
@@ -163,6 +171,33 @@ public class CalcView extends JFrame {
 	public JButton getBtnEnter() {
 		if(btnEnter == null){
 			btnEnter = new JButton("=");
+			btnEnter.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) {
+					String eingabe = getTxtEingabe().getText();
+					if (operator == "+")
+					{
+						String[] a = eingabe.split("+");
+						double zahl1 = Double.parseDouble(a[0]);
+						double zahl2 = Double.parseDouble(a[1]);
+						
+						getTxtEingabe().setText("" + c.addiere(zahl1, zahl2));
+					}
+					else if (operator == "-")
+					{
+						
+					}
+					else if (operator == "x")
+					{
+						
+					}
+					else
+					{
+						
+					}
+					
+				}
+			});
 		}
 		return btnEnter;
 	}
