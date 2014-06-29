@@ -1,6 +1,12 @@
 package de.calc.control;
 
+import de.calc.view.CalcView;
+
 public class CalcControl {
+	
+	public static void main(String[] args) {
+		new CalcView();
+	}
 
 	public double addiere(double a, double b) {
 		return a + b;
